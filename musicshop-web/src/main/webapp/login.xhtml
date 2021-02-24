@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:p="http://primefaces.org/ui">
+	<h:head>
+		<title>Inicio de Sesión</title>
+		<meta name="viewport" content="width=device-width, user-scalable=no"/>
+		<h:outputStylesheet library="css" name="styles.css"></h:outputStylesheet>
+	</h:head>
+	<h:body>
+	 	<div class="card">
+			<h:form id="frmLogin">
+				<p:growl id="growl" skipDetailIfEqualsSummary="true" showDetail="true"/>
+				<p:panel header="Inicio de Sesión">
+					<p:panelGrid id="pnlGrid" layout="grid" columns="2" columnClasses="ui-grid-col-2,ui-grid-col-4" styleClass="ui-panelgrid-blank ui-fluid" style="border:0px none; background-color:transparent;">
+						<p:outputLabel value="Usuario: " styleClass="colorText"></p:outputLabel>
+						<p:inputText value="#{loginController.user}" required="true" requiredMessage="Ingrese Usuario"></p:inputText>
+						<p:outputLabel value="Contraseña: "></p:outputLabel>
+						<p:password value="#{loginController.password}" required="true" requiredMessage="Ingrese Contraseña"></p:password>
+						<p:commandButton value="Entrar" action="#{loginController.login}" update="growl "></p:commandButton>
+					</p:panelGrid>
+				</p:panel>
+			</h:form>
+		</div>
+	</h:body>
+</html>

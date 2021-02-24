@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.project</groupId>
+  <artifactId>musicshop</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <modules>
+    <module>musicshop-entities</module>
+    <module>musicshop-data</module>
+    <module>musicshop-services</module>
+    <module>musicshop-web</module>
+  </modules>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>14</maven.compiler.source>
+    <maven.compiler.target>14</maven.compiler.target>
+    <junit-version>5.7.0</junit-version>
+    <hibernate-version>5.4.22.Final</hibernate-version>
+    <MySQL-version>8.0.23</MySQL-version>
+    <JPASpring-version>2.4.5</JPASpring-version>
+    <CommonsDBCP-version>2.8.0</CommonsDBCP-version>
+    <JPAPersistence-version>1.0.2.Final</JPAPersistence-version>
+    <Spring-version>5.3.4</Spring-version>
+    <SpringBootTest-version>2.4.3</SpringBootTest-version>
+    <JSF-version>2.2.20</JSF-version>
+    <JavaxAnnotation-version>1.3.2</JavaxAnnotation-version>
+    <ElImpl-version>2.2.1-b05</ElImpl-version>
+    <PrimeFaces-version>10.0.0-RC1</PrimeFaces-version>
+    <Lombok-version>1.18.18</Lombok-version>
+  </properties>
+</project>
