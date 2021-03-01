@@ -1,5 +1,5 @@
 # MusicShop
-MusicShop Version 1.3
+MusicShop Version 1.4
 
 Actualizaciones:
 - Pestaña de Detalles Implementado
