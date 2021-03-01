@@ -11,11 +11,11 @@ import com.project.musicshopservices.service.LoginService;
 public class LoginServiceImpl implements LoginService {
 
 	@Autowired
-	private PersonDAO personDAO;
+	private PersonDAO personDAOImpl;
 	
 	@Override
 	public Person consultUser(String user, String password) {
-		return this.personDAO.findByUserAndPassword(user, password);
+		return this.personDAOImpl.findByUserAndPassword(user, password);
 	}
 
 }

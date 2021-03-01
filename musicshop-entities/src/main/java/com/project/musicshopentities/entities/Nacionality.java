@@ -11,14 +11,17 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Entity
-@Table(name = "tipoidentificacion")
+@Table(name = "nacionalidad")
 @Data
 @EqualsAndHashCode(callSuper=false)
-public class TypeofIdentification extends CommonEntities{
+public class Nacionality extends CommonEntities {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idTipoIdentificacion", nullable = false)
-	private Long idTypeOfIdentification;
-	@Column(name = "nombre")
-	private String name;
+	@Column(name = "idNacionalidad")
+	private Long idNacionality;
+	@Column(name = "descripcion", length = 60, nullable = false)
+	private String description;
+	@Column(name = "abreviacion", length = 60, nullable = false)
+	private String abbreviation;
+	
 }

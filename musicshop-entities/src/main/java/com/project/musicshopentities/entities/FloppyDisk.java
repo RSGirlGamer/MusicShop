@@ -11,14 +11,14 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Entity
-@Table(name = "tipoidentificacion")
+@Table(name = "disquera")
 @Data
 @EqualsAndHashCode(callSuper=false)
-public class TypeofIdentification extends CommonEntities{
+public class FloppyDisk extends CommonEntities {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idTipoIdentificacion", nullable = false)
-	private Long idTypeOfIdentification;
-	@Column(name = "nombre")
-	private String name;
+	@Column(name = "idDisquera")
+	private Long idFloppyDisk;
+	@Column(name = "descripcion", length = 100, nullable = false)
+	private String description;
 }

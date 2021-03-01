@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:ui="http://java.sun.com/jsf/facelets">
+	<p:panelMenu style="width:100%">
+            <p:submenu label="Mi Perfil" rendered="true" expanded="true">
+                <p:menuitem value="Información General" icon="pi pi-user-edit"/>
+                <p:menuitem value="Mis Compras" icon="pi pi-shopping-cart"/>
+            </p:submenu>
+            <p:submenu label="Administración" rendered="false">
+                <p:menuitem value="Delete" action="#{menuView.delete}" ajax="false" icon="pi pi-times"/>
+            </p:submenu>
+        </p:panelMenu>
+</ui:composition>

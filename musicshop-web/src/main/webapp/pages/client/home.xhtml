@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:ui="http://java.sun.com/jsf/facelets">
+	<div class="p-grid">
+		<div class="p-col-12">
+	 		<div class="ui-inputgroup" style="display:block; text-align: center;">
+	 			<p:inputText value="#{homeController.filter}" style="width: 90%; margin-bottom: 20px" placeholder="Artista, albúm, etc...">
+	 				<p:ajax event="keyup" listener="#{homeController.consultAlbumsArtistsByFilter}" update="pnl"></p:ajax>
+	 			</p:inputText>
+	 		</div>
+	 		<div class="ui-inputgroup" style="display:block; text-align: center;">
+	 			<p:panel id="pnl" style="width: 90%; margin: 0px auto; border: none;">
+	 				<div class="product card" style="width: 100%; margin: 0px auto; border: none">
+		 				<p:dataView id="dataViewResults" style="width: 100%" styleClass=".product-list-item" layout="grid" var="artistAlbum" value="#{homeController.artistAlbumDTO}" rows="12" paginator="true" rowsPerPageTemplate="6,12,16" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" gridIcon="pi pi-th-large" listIcon="pi pi-bars" rendered="#{not empty homeController.artistAlbumDTO}">
+				            <p:dataViewGridItem>
+				                <div class="product-grid-item card border-1" style="width: 100%; height: 100%">
+				                    <div class="product-grid-item-top">
+				                        <div>
+				                            <i class="pi pi-tag product-category-icon"/>
+				                            <span class="product-category">#{artistAlbum.artist.subGender.gender.description}, #{artistAlbum.artist.subGender.description}</span>
+				                        </div>
+				                        <span class="product-badge status-#{artistAlbum.album.status == true ? 'instock' : 'outofstock'}">#{artistAlbum.album.status == true ? 'Disponible' : 'No disponible'}</span>
+				                    </div>
+				                    <div class="product-grid-item-content">
+				                        <p:graphicImage name="images/albums/#{artistAlbum.album.image}"/>
+				                        <div class="product-name">#{artistAlbum.album.name}</div>
+				                        <p:rating readonly="true" value="#{artistAlbum.album.rating}"/>
+				                    </div>
+				                    <div class="product-grid-item-bottom">
+				                        <h:outputText value="#{artistAlbum.album.value}" styleClass="product-price">
+				                            <f:convertNumber currencySymbol="$" type="currency"/>
+				                        </h:outputText>
+				                        <p:commandButton type="button" value="Add To Cart" icon="pi pi-shopping-cart" disabled="#{artistAlbum.album.status == 'false'}"></p:commandButton>
+				                    </div>
+			                	</div>
+			            	</p:dataViewGridItem>
+				            <p:dataViewListItem>
+				                <div class="product-list-item">
+				                    <p:graphicImage name="images/albums/#{artistAlbum.album.image}"/>
+				                    <div class="product-list-detail">
+				                        <div class="product-name">#{artistAlbum.album.name}</div>
+				                        <div class="product-description">#{{artistAlbum.album.description.substring(0, artistAlbum.album.description.indexOf('.') + 1)}}</div>
+				                        <p:rating readonly="true" value="#{artistAlbum.album.rating}"/>
+				                        <i class="pi pi-tag product-category-icon"/>
+				                        <span class="product-category">#{artistAlbum.artist.subGender.gender.description}, #{artistAlbum.artist.subGender.description}</span>
+				                    </div>
+				                    <div class="product-list-action">
+				                        <h:outputText value="#{artistAlbum.album.value}" styleClass="product-price">
+				                            <f:convertNumber currencySymbol="$" type="currency"/>
+				                        </h:outputText>
+				                        <p:commandButton type="button" value="Add To Cart" icon="pi pi-shopping-cart" disabled="#{artistAlbum.album.status == 'false'}"></p:commandButton>
+				                        <span class="product-badge status-#{artistAlbum.album.status == true ? 'instock' : 'outofstock'}">#{artistAlbum.album.status == true ? 'Disponible' : 'No disponible'}</span>
+				                    </div>
+				                </div>
+				            </p:dataViewListItem>
+			        	</p:dataView>
+		        	</div>
+	 			</p:panel>
+	 		</div>
+	 	</div>
+	</div>
+</ui:composition>
