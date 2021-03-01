@@ -8,6 +8,7 @@
 	<h:head>
 		<title>Inicio de Sesión</title>
 		<ui:include src="/pages/commons/scripts.xhtml"></ui:include>
+		<p:growl></p:growl>
 		<h:outputStylesheet library="css" name="styles.css"></h:outputStylesheet>
 <!-- 		<h:outputStylesheet library="css" name="primeflex.min.css"></h:outputStylesheet> -->
 	</h:head>
@@ -16,10 +17,7 @@
 	 		<h:form id="dashboard">
 	 			<ui:include src="/pages/commons/navbar.xhtml"></ui:include>
 	 			<div class="p-grid sample-layout">
-	 				<div class="p-col-12 p-md-2" style="background-color: #191919">
-	 					<p:graphicImage name="images/123260750-352-k849264.jpg" height="300px" width="100%"></p:graphicImage>
-	 					<ui:include src="/pages/commons/panelmenu.xhtml"></ui:include>
-	 				</div>
+	 				<ui:include src="/pages/commons/header.xhtml"></ui:include>
 	 				<div class="p-col-12 p-md-10 p-col-nogutter" style="background-color: #191919">
 	 					<div class="p-grid">
 	 						<div class="p-col-12">
@@ -29,11 +27,9 @@
 	 						</div>
 	 					</div>
 	 				</div>
-	 				<div class="p-col-12" style="background-color: #191919">
-	 					<p:outputLabel value="@Copyright by RSGirlGamer"></p:outputLabel>
-	 				</div>
+	 				<ui:include src="/pages/commons/footer.xhtml"></ui:include>
 	 			</div>
 	 		</h:form>
-		</div>
+	 	</div>
 	</h:body>
 </html>

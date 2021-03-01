@@ -33,7 +33,8 @@
 				                        <h:outputText value="#{artistAlbum.album.value}" styleClass="product-price">
 				                            <f:convertNumber currencySymbol="$" type="currency"/>
 				                        </h:outputText>
-				                        <p:commandButton type="button" value="Add To Cart" icon="pi pi-shopping-cart" disabled="#{artistAlbum.album.status == 'false'}"></p:commandButton>
+				                    <p:commandButton styleClass=".ui-button-text-icon-left .ui-button-text" style="bottom:50px; left:90px" value="View Info" action="#{homeController.showDetail(artistAlbum)}" icon="pi pi-info"></p:commandButton>
+				                    <p:commandButton style="right:32px" value="Add To Cart" icon="pi pi-shopping-cart" disabled="#{artistAlbum.album.status == 'false'}"></p:commandButton>
 				                    </div>
 			                	</div>
 			            	</p:dataViewGridItem>
@@ -51,8 +52,9 @@
 				                        <h:outputText value="#{artistAlbum.album.value}" styleClass="product-price">
 				                            <f:convertNumber currencySymbol="$" type="currency"/>
 				                        </h:outputText>
-				                        <p:commandButton type="button" value="Add To Cart" icon="pi pi-shopping-cart" disabled="#{artistAlbum.album.status == 'false'}"></p:commandButton>
+				                        <p:commandButton value="Add To Cart" icon="pi pi-shopping-cart" disabled="#{artistAlbum.album.status == 'false'}"></p:commandButton>
 				                        <span class="product-badge status-#{artistAlbum.album.status == true ? 'instock' : 'outofstock'}">#{artistAlbum.album.status == true ? 'Disponible' : 'No disponible'}</span>
+				                        <p:commandButton style="margin-top:5px" value="View Info" action="#{homeController.showDetail(artistAlbum)}" icon="pi pi-info"></p:commandButton>
 				                    </div>
 				                </div>
 				            </p:dataViewListItem>
@@ -62,4 +64,16 @@
 	 		</div>
 	 	</div>
 	</div>
+	<style>
+		.ui-button-text-icon-left .ui-button-text {
+		    padding: .3em 1em .3em 2.1em;
+		    width: 100px;
+		    display: flex;
+		}
+		.product-grid-item-bottom {
+			height: 100px;
+			display: flex;
+			margin-top: 40px;
+		}
+	</style>
 </ui:composition>

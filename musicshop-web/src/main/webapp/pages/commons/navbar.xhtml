@@ -3,9 +3,12 @@
       xmlns:f="http://java.sun.com/jsf/core"      
       xmlns:h="http://java.sun.com/jsf/html"
 	  xmlns:p="http://primefaces.org/ui"
-	  xmlns:ui="http://java.sun.com/jsf/facelets">
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	   xmlns:pe="http://primefaces.org/ui/extensions">
 	<p:menubar id="menubar">
-		<p:menuitem icon="pi pi-shopping-cart" value="Mi Carrito"></p:menuitem>
+		<p:menuitem iconPos="left" icon="pi pi-shopping-cart">
+			 <p:badge value="6"></p:badge>
+		</p:menuitem>
 		<p:menuitem icon="pi pi-sign-out" value="Cerrar Sesión" action="#{sessionBean.closeSession}"></p:menuitem>
 	</p:menubar>
 </ui:composition>

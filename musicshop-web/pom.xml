@@ -67,6 +67,12 @@
 	    <artifactId>primefaces</artifactId>
 	    <version>${PrimeFaces-version}</version>
 	</dependency>
+	<!-- https://mvnrepository.com/artifact/org.primefaces.extensions/primefaces-extensions -->
+	<dependency>
+	    <groupId>org.primefaces.extensions</groupId>
+	    <artifactId>primefaces-extensions</artifactId>
+	    <version>${PrimeFaces-version}</version>
+	</dependency>
 	<!-- Lombok Dependencies -->
     <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
 	<dependency>
