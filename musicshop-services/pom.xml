@@ -32,6 +32,19 @@
 	    <groupId>com.project</groupId>
 	    <version>0.0.1-SNAPSHOT</version>
     </dependency>
+    <!-- Apache Log4 -->
+	<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+	<dependency>
+	    <groupId>org.apache.logging.log4j</groupId>
+	    <artifactId>log4j-core</artifactId>
+	    <version>${Log4j-version}</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
+	<dependency>
+	    <groupId>org.apache.logging.log4j</groupId>
+	    <artifactId>log4j-api</artifactId>
+	    <version>${Log4j-version}</version>
+	</dependency>
   </dependencies>
 
   <build>

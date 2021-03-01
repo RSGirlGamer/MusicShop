@@ -7,6 +7,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.project.musicshopentities.dto.ArtistAlbumDTO;
 import com.project.musicshopservices.service.HomeService;
 
@@ -16,24 +19,25 @@ import lombok.Data;
 @ViewScoped
 @Data
 public class HomeController {
+	private static final Logger LOGGER = LogManager.getLogger(HomeController.class);
 	private String filter;
 	private List<ArtistAlbumDTO> artistAlbumDTO;
 	@ManagedProperty("#{homeServiceImpl}")
 	private HomeService homeServiceImpl;
 	@PostConstruct
 	public void init() {
-		System.out.println("Inicializando...");
+		LOGGER.info("INFO");
 	}
 	public void consultAlbumsArtistsByFilter() {
 		try {
 			this.artistAlbumDTO = this.homeServiceImpl.consultAlbumByFilter(this.filter);
 			if(this.artistAlbumDTO != null) {
 				for (ArtistAlbumDTO artistAlbums : artistAlbumDTO) {
-					System.out.println("Artista: " + artistAlbums.getArtist().getName());
+					LOGGER.info("Artista: " + artistAlbums.getArtist().getName());
 				}
 			}
 		} catch (Exception e) {
-			System.out.println(e.getCause());
+			LOGGER.error(e.getCause());
 		}
 	}
 }
