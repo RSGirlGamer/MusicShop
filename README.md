@@ -1,5 +1,5 @@
 # MusicShop
-MusicShop Version 1.10
+MusicShop Version 1.1
 
 Actualizaciones:
 - Funcionalidad Login SpringJPA
