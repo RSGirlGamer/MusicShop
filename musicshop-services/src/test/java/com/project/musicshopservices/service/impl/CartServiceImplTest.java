@@ -9,25 +9,22 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.test.context.ContextConfiguration;
 
-import com.project.musicshopentities.dto.ArtistAlbumDTO;
-import com.project.musicshopservices.service.HomeService;
+import com.project.musicshopentities.entities.CartAlbum;
+import com.project.musicshopentities.entities.Person;
+import com.project.musicshopservices.service.LoginService;
 
 @Ignore()
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @ContextConfiguration(locations = {"classpath:applicationContext-test.xml"})
-class HomeServiceImplTest {
-
+class CartServiceImplTest {
 	@Autowired
-	private HomeService homeServiceImpl;
+	private LoginService loginServiceImpl;
 	@Test
-	void testConsultAlbumByFilter() {
-		try {
-			List<ArtistAlbumDTO> list = this.homeServiceImpl.consultAlbumByFilter("Metal");
-			for (ArtistAlbumDTO artistAlbumDTO : list) {
-				System.out.println(artistAlbumDTO.getAlbum());
-			}
-		} catch (NullPointerException e) {
-			System.out.println(e.getCause());
+	void calculateTotal() {
+		Person person = this.loginServiceImpl.consultUser("RSGirlGamer", "Rokka");
+		List<CartAlbum> cartAlbums = person.getCart().getCartAlbums();
+		for (CartAlbum cartAlbum : cartAlbums) {
+			System.out.println(cartAlbum.getAmount());
 		}
 	}
 

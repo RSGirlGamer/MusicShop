@@ -33,7 +33,7 @@
 				                        <h:outputText value="#{artistAlbum.album.value}" styleClass="product-price">
 				                            <f:convertNumber currencySymbol="$" type="currency"/>
 				                        </h:outputText>
-				                    <p:commandButton styleClass=".ui-button-text-icon-left .ui-button-text" style="bottom:50px; left:90px" value="View Info" action="#{homeController.showDetail(artistAlbum)}" icon="pi pi-info"></p:commandButton>
+				                    <p:commandButton styleClass=".ui-button-text-icon-left .ui-button-text" value="View Info" action="#{homeController.showDetail(artistAlbum)}" style="bottom:50px; left:30%;" icon="pi pi-info"></p:commandButton>
 				                    <p:commandButton style="right:32px" value="Add To Cart" icon="pi pi-shopping-cart" disabled="#{artistAlbum.album.status == 'false'}"></p:commandButton>
 				                    </div>
 			                	</div>
@@ -44,7 +44,6 @@
 				                    <div class="product-list-detail">
 				                        <div class="product-name">#{artistAlbum.album.name}</div>
 				                        <div class="product-description">#{{artistAlbum.album.description.substring(0, artistAlbum.album.description.indexOf('.') + 1)}}</div>
-				                        <p:rating readonly="true" value="#{artistAlbum.album.rating}"/>
 				                        <i class="pi pi-tag product-category-icon"/>
 				                        <span class="product-category">#{artistAlbum.artist.subGender.gender.description}, #{artistAlbum.artist.subGender.description}</span>
 				                    </div>
@@ -66,14 +65,14 @@
 	</div>
 	<style>
 		.ui-button-text-icon-left .ui-button-text {
-		    padding: .3em 1em .3em 2.1em;
-		    width: 100px;
-		    display: flex;
+		   	padding: .3em 1em .3em 2.1em;
+		   	width: 100px;
+		   	display: flex;
 		}
 		.product-grid-item-bottom {
 			height: 100px;
 			display: flex;
 			margin-top: 40px;
-		}
+			}
 	</style>
 </ui:composition>

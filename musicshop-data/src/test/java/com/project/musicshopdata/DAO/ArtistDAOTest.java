@@ -1,18 +1,19 @@
-package com.project.musicshopdata.impl;
+package com.project.musicshopdata.DAO;
 
 import java.util.List;
 
+import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 
-import com.project.musicshopdata.DAO.ArtistDAO;
 import com.project.musicshopentities.dto.ArtistAlbumDTO;
 
+@Ignore()
 @SpringBootTest
 @ContextConfiguration(locations = {"classpath:applicationContext-test.xml"})
-class ArtistDAOImplTest {
+class ArtistDAOTest {
 	
 	@Autowired()
 	private ArtistDAO artistDAO;

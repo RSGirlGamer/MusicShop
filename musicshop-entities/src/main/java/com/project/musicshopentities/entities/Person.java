@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -42,4 +43,6 @@ public class Person extends CommonEntities{
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idRol", nullable = false)
 	private Rol rol;
+	@OneToOne(mappedBy = "person")
+	private Cart cart;
 }

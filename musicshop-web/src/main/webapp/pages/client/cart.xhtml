@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+	<h:head>
+		<title>Inicio de Sesión</title>
+		<ui:include src="/pages/commons/scripts.xhtml"></ui:include>
+		<h:outputStylesheet library="css" name="styles.css"></h:outputStylesheet>
+<!-- 		<h:outputStylesheet library="css" name="primeflex.min.css"></h:outputStylesheet> -->
+	</h:head>	
+	<h:body>
+	 	<div class="ui-fluid">
+	 		<h:form id="cart">
+	 			<ui:include src="/pages/commons/navbar.xhtml"></ui:include>
+	 			<div class="p-grid sample-layout">
+	 				<ui:include src="/pages/commons/header.xhtml"></ui:include>
+	 				<div class="p-col-12 p-md-10 p-col-nogutter" style="background-color: #191919">
+	 					<div class="p-grid">
+	 						<div class="p-col-12">
+	 						<p:panel id="pnl" style="width: 90%; margin: 0px auto; border: none;">
+	 								<ui:include src="/pages/commons/steps.xhtml"></ui:include>
+	 								<div class="product card" style="width: 100%; margin: 0px auto; border: none">
+			 							<p:dataView id="dataViewResults" styleClass=".product-list-item" var="artistAlbum" value="#{sessionBean.person.cart.cartAlbums}" listIcon="pi pi-bars">
+			 						    	<p:dataViewListItem>
+							                	<div class="product-list-item">
+							                    	<p:graphicImage name="images/albums/#{artistAlbum.album.image}"/>
+							                    	<div class="product-list-detail">					                        	
+							                    		<div class="product-name">#{artistAlbum.album.name}</div>
+							                 			<div class="product-description">#{artistAlbum.album.artist.name}</div>
+							                        	<div class="product-description">#{artistAlbum.album.floppyDisk.description}</div>
+							                        	<h:outputText value="#{artistAlbum.album.value}" styleClass="product-description">
+							                            	<f:convertNumber currencySymbol="$" type="currency"/>
+							                        	</h:outputText>
+							                        	<p:rating readonly="true" value="#{artistAlbum.album.rating}"/>
+							                    	</div>
+							                    	<div class="product-list-action">
+							                        	<h:outputText value="#{artistAlbum.album.value * artistAlbum.amount}" styleClass="product-price">
+							                            	<f:convertNumber currencySymbol="$" type="currency"/>
+							                        	</h:outputText>
+							                        	<p:selectOneMenu id="cmbAmount" value="#{artistAlbum.amount}" style="margin-bottom: 20px">
+				 											<f:selectItem itemValue="1" itemLabel="1"></f:selectItem>
+				 											<f:selectItem itemValue="2" itemLabel="2"></f:selectItem>
+				 											<f:selectItem itemValue="3" itemLabel="3"></f:selectItem>
+				 											<f:selectItem itemValue="4" itemLabel="4"></f:selectItem>
+				 											<f:selectItem itemValue="5" itemLabel="5"></f:selectItem>
+				 											<p:ajax event="change" listener="#{cartController.updateAmountCar(artistAlbum)}" update="cart:pnlTotal, cart:dataViewResults"></p:ajax>
+				 										</p:selectOneMenu>
+							                        	<p:commandButton styleClass="ui-button-danger" value="Delete" icon="pi pi-trash">
+							                        		<p:confirm header="Eliminar Producto" message="Estas seguro de eliminar el producto #{artistAlbum.album.name}" icon="pi pi-info-circle"/>
+							                        	</p:commandButton>
+							                        	<p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
+												            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no ui-button-flat"/>
+												            <p:commandButton value="Si" update="cart:badgeCart, cart:dataViewResults, cart:total" action="#{cartController.deleteAlbumCart(artistAlbum)}" styleClass="ui-confirmdialog-yes" />
+												        </p:confirmDialog>
+							                    	</div>
+							                	</div>
+							            	</p:dataViewListItem>
+					    				</p:dataView>
+					    				<p:panelGrid id="pnlTotal" columns="5" columnClasses="ui-g-12 ui-md-2, ui-g-12 ui-md-4, ui-g-12 ui-md-2, ui-g-12 ui-md-2, ui-g-12 ui-md-2" layout="grid">
+					    					<p:outputLabel style="font-size: 30px" value="Total: "></p:outputLabel>
+					    					<p:outputLabel id="total" style="font-size: 30px" value="#{cartController.sessionBean.total}">
+					    						<f:convertNumber currencySymbol="$" type="currency"/>
+					    					</p:outputLabel>
+					    				</p:panelGrid>
+					    				<p:commandButton style="margin-top: 20px" value="Continue" disabled="#{empty sessionBean.person.cart.cartAlbums}"/>
+					    				</div>
+				    				</p:panel>
+	 							</div>
+	 						</div>
+	 					</div>
+	 				</div>
+	 				<ui:include src="/pages/commons/footer.xhtml"></ui:include>
+	 		</h:form>
+	 	</div>
+	</h:body>
+</html>

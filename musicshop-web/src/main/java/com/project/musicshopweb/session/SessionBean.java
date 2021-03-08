@@ -1,7 +1,6 @@
 package com.project.musicshopweb.session;
 
 import java.io.IOException;
-
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -20,6 +19,7 @@ import lombok.Data;
 public class SessionBean {
 	private Person person;
 	private ArtistAlbumDTO artistAlbumDTO;
+	private float total;
 	@PostConstruct
 	public void init() {
 		System.out.println("Creando Sesión....");

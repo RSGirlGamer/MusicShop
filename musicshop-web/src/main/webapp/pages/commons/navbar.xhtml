@@ -6,8 +6,8 @@
 	  xmlns:ui="http://java.sun.com/jsf/facelets"
 	   xmlns:pe="http://primefaces.org/ui/extensions">
 	<p:menubar id="menubar">
-		<p:menuitem iconPos="left" icon="pi pi-shopping-cart">
-			 <p:badge value="6"></p:badge>
+		<p:menuitem iconPos="left" url="#{request.contextPath}/pages/client/cart.xhtml" icon="pi pi-shopping-cart">
+			 <p:badge id="badgeCart" value="#{sessionBean.person.cart.cartAlbums.size()}" rendered="#{sessionBean.person.cart.cartAlbums.size() != null}"></p:badge>
 		</p:menuitem>
 		<p:menuitem icon="pi pi-sign-out" value="Cerrar Sesión" action="#{sessionBean.closeSession}"></p:menuitem>
 	</p:menubar>
