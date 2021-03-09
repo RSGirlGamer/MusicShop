@@ -11,4 +11,4 @@ Actualizaciones:
 - Steps de Compra Implementados
 - Reestructuración de Interfaces DAO
 - Entidades Extra Implementadas
-- Funcionalidad de la pestaña Detalle Implemenetada
+- Funcionalidad de la pestaña Detalle Implementada
