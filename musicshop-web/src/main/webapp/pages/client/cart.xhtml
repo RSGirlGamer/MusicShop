@@ -65,7 +65,7 @@
 					    						<f:convertNumber currencySymbol="$" type="currency"/>
 					    					</p:outputLabel>
 					    				</p:panelGrid>
-					    				<p:commandButton style="margin-top: 20px" value="Continue" disabled="#{empty sessionBean.person.cart.cartAlbums}"/>
+					    				<p:commandButton style="margin-top: 20px" value="Continue" disabled="#{empty sessionBean.person.cart.cartAlbums}" action="#{stepController.changeStep('/pages/client/payment.xhtml', 1)}"/>
 					    				</div>
 				    				</p:panel>
 	 							</div>

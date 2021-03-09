@@ -29,5 +29,10 @@
     <PrimeFaces-version>10.0.0-RC1</PrimeFaces-version>
     <Lombok-version>1.18.18</Lombok-version>
     <Log4j-version>2.14.0</Log4j-version>
+    <PayPal-version>1.0.2</PayPal-version>
+    <JSON-version>20180813</JSON-version>
+    <CommonsLang3-version>3.6</CommonsLang3-version>
+    <JavaxServlet-version>3.1.0</JavaxServlet-version>
+    <GSON-version>2.8.6</GSON-version>
   </properties>
 </project>

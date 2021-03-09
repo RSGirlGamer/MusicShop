@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+	<h:head>
+		<title>Inicio de Sesión</title>
+		<ui:include src="/pages/commons/scripts.xhtml"></ui:include>
+		<script src="https://www.paypal.com/sdk/js?client-id=AZaWRXaNB2mGxt4ZW3W_z0prFSUSZE7-fcwVhnX-VnwCONNEDHHoZRXI7g5sAnz7FsPjsBrmtliNlqZ_"></script>
+		<script>paypal.Buttons({
+		    createOrder: function(data, actions) {
+		        // This function sets up the details of the transaction, including the amount and line item details.
+		        return fetch('../../PayPalServlet', {
+		        	method: 'post',
+		        	headers: {
+		        		'content-type': 'application/json'
+		        	}
+		        }).then(function(response) {
+		        	var json = response.json();
+		        	console.log(json);
+		        	return json;
+		        }).then(function(data) {
+		        	console.log(data);
+		        	return data.result.id;
+		        })	
+		        },
+		        onApprove: function(data, actions) {
+		        	return actions.order.capture().then(function(detail) {
+		        		//Generar la Factura
+		        	})
+		        }
+		    }).render('#payPalContainer');</script>
+		<h:outputStylesheet library="css" name="styles.css"></h:outputStylesheet>
+<!-- 		<h:outputStylesheet library="css" name="primeflex.min.css"></h:outputStylesheet> -->
+	</h:head>	
+	<h:body>
+	 	<div class="ui-fluid">
+	 		<h:form id="cart">
+	 			<ui:include src="/pages/commons/navbar.xhtml"></ui:include>
+	 			<div class="p-grid sample-layout">
+	 				<ui:include src="/pages/commons/header.xhtml"></ui:include>
+	 				<div class="p-col-12 p-md-10 p-col-nogutter" style="background-color: #191919">
+	 					<div class="p-grid">
+	 						<div class="p-col-12">
+	 						<p:panel id="pnl" style="width: 90%; margin: 0px auto; border: none;">
+	 							<ui:include src="/pages/commons/steps.xhtml"></ui:include>
+				    			<div class="p-col" style="width: 90%; margin: 0px auto; text-align: center">
+					 				<div id="payPalContainer" class="p-col" style="width: 90%; margin: 0px auto; background-color: black"></div>
+					 					
+					 				</div>
+					 			<p:commandButton style="margin-top: 20px" value="Continue" disabled="#{empty sessionBean.person.cart.cartAlbums}"/>
+				    		</p:panel>
+	 							</div>
+	 						</div>
+	 					</div>
+	 				</div>
+	 			<ui:include src="/pages/commons/footer.xhtml"></ui:include>
+	 		</h:form>
+	 	</div>
+	</h:body>
+</html>

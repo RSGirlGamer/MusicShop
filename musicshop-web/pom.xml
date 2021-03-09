@@ -99,6 +99,21 @@
 	    <artifactId>log4j-api</artifactId>
 	    <version>${Log4j-version}</version>
 	</dependency>
+	<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+	<dependency>
+	    <groupId>javax.servlet</groupId>
+	    <artifactId>javax.servlet-api</artifactId>
+	    <version>${JavaxServlet-version}</version>
+	    <scope>provided</scope>
+	</dependency>
+	<!-- GSON Dependencies -->
+	<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+	<dependency>
+	    <groupId>com.google.code.gson</groupId>
+	    <artifactId>gson</artifactId>
+	    <version>${GSON-version}</version>
+	</dependency>
+		
   </dependencies>
 
   <build>

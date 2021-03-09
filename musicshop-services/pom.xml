@@ -45,6 +45,22 @@
 	    <artifactId>log4j-api</artifactId>
 	    <version>${Log4j-version}</version>
 	</dependency>
+	<!-- PayPal Dependencies -->
+	<dependency>
+	    <groupId>com.paypal.sdk</groupId>
+	    <artifactId>checkout-sdk</artifactId>
+	    <version>${PayPal-version}</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.json</groupId>
+	    <artifactId>json</artifactId>
+	    <version>${JSON-version}</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.apache.commons</groupId>
+	    <artifactId>commons-lang3</artifactId>
+	    <version>${CommonsLang3-version}</version>
+	</dependency>
   </dependencies>
 
   <build>

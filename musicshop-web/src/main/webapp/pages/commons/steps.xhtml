@@ -6,7 +6,7 @@
 	  xmlns:ui="http://java.sun.com/jsf/facelets"
 	   xmlns:pe="http://primefaces.org/ui/extensions">
 	<div class="card">
-	    <p:steps activeIndex="0" readonly="true" style="margin-bottom: 20px">
+	    <p:steps activeIndex="#{sessionBean.step}" readonly="true" style="margin-bottom: 20px">
 	        <p:menuitem value="Productos Seleccionados"/>
 	        <p:menuitem value="Realizar Pago"/>
 	        <p:menuitem value="Confirmación"/>

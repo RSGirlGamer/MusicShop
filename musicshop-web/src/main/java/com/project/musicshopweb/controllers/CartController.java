@@ -29,6 +29,7 @@ public class CartController {
 	private SessionBean sessionBean;
 	@PostConstruct
 	public void init() {
+		this.sessionBean.setStep(0);
 		LOGGER.info("INFO");
 		this.calculateTotal();
 	}
