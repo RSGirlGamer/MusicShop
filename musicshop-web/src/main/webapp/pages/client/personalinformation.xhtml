@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+	<h:head>
+		<title>Inicio de Sesión</title>
+		<ui:include src="/pages/commons/scripts.xhtml"></ui:include>
+		<h:outputStylesheet library="css" name="styles.css"></h:outputStylesheet>
+<!-- 		<h:outputStylesheet library="css" name="primeflex.min.css"></h:outputStylesheet> -->
+	</h:head>	
+	<h:body>
+	 	<div class="ui-fluid">
+	 		<h:form id="purchases">
+	 			<p:growl id="messages" showSummary="true" showDetail="true" skipDetailIfEqualsSummary="true"></p:growl>
+	 			<ui:include src="/pages/commons/navbar.xhtml"></ui:include>
+	 			<div class="p-grid sample-layout">
+	 				<ui:include src="/pages/commons/header.xhtml"></ui:include>
+	 				<div class="p-col-12 p-md-10 p-col-nogutter" style="background-color: #191919">
+	 					<div class="p-grid">
+	 						<div class="p-col-12">
+	 						<p:outputLabel style="font-size: 100%; margin-left: 10px" value="Información General"></p:outputLabel>
+	 						<p:separator></p:separator>
+	 						<p:panelGrid columns="2" columnClasses="ui-g-2 ui-md-2, ui-g-10 ui-md-10" layout="grid" style="ui-fluid">
+	 							<p:graphicImage name="images/personas/SaradaImage.jpg" style="width:100%"></p:graphicImage>
+	 							<p:panel id="infoPersonal" header="Información Personal">
+	 								<p:panelGrid columns="4" columnClasses="ui-g-12 ui-md-2, ui-g-12 ui-md-4, ui-g-12 ui-md-2, ui-g-12 ui-md-4" style="ui-fluid" layout="grid">
+	 									<p:outputLabel value="Nombre:" for="txtName"></p:outputLabel>
+	 									<p:inputText id="txtName" value="#{sessionBean.person.name}" required="true" requiredMessage="El nombre es requerido"></p:inputText>
+	 									<p:outputLabel value="Primer Apellido:" for="txtFirstLastName"></p:outputLabel>
+	 									<p:inputText id="txtFirstLastName" value="#{sessionBean.person.firstLastName}" required="true" requiredMessage="El primer apellido es requerido"></p:inputText>
+	 									<p:outputLabel value="Segundo Apellido:" for="txtSecondLastName"></p:outputLabel>
+	 									<p:inputText id="txtSecondLastName" value="#{sessionBean.person.secondtLastName}" required="true" requiredMessage="El segundo apellido es requerido"></p:inputText>
+	 									<p:outputLabel value="Usuario:" for="txtUser"></p:outputLabel>
+	 									<p:inputText id="txtUser" value="#{sessionBean.person.user}" required="true" requiredMessage="El usuario es requerido"></p:inputText>
+	 									<p:outputLabel value="Contraseña:" for="txtPassword"></p:outputLabel>
+	 									<p:password id="txtPassword" value="#{sessionBean.person.password}"></p:password>
+	 								</p:panelGrid>
+	 							</p:panel>
+	 						</p:panelGrid>
+	 						<p:panelGrid columns="2" columnClasses="ui-g-2 ui-md-2, ui-g-10 ui-md-10" layout="grid" style="ui-fluid">
+	 							<p:column></p:column>
+	 							<p:commandButton value="Guardar" action="#{infoPersonalController.updatePerson}" update="infoPersonal, messages"></p:commandButton>
+	 						</p:panelGrid>
+	 						</div>
+	 						</div>
+	 					</div>
+	 				</div>
+	 			<ui:include src="/pages/commons/footer.xhtml"></ui:include>
+	 		</h:form>
+	 	</div>
+	</h:body>
+</html>

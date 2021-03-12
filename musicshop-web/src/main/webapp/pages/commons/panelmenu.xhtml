@@ -6,8 +6,8 @@
 	  xmlns:ui="http://java.sun.com/jsf/facelets">
 	<p:panelMenu style="width:100%">
             <p:submenu label="Mi Perfil" rendered="true" expanded="true">
-                <p:menuitem value="Información General" icon="pi pi-user-edit"/>
-                <p:menuitem value="Mis Compras" icon="pi pi-shopping-cart"/>
+                <p:menuitem value="Información General" icon="pi pi-user-edit" action="#{pageController.redirectPage('/pages/client/personalinformation.xhtml')}"/>
+                <p:menuitem value="Mis Compras" icon="pi pi-shopping-cart" action="#{pageController.redirectPage('/pages/client/purchases.xhtml')}"/>
             </p:submenu>
             <p:submenu label="Administración" rendered="false">
                 <p:menuitem value="Delete" action="#{menuView.delete}" ajax="false" icon="pi pi-times"/>

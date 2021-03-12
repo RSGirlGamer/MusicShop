@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+	<h:head>
+		<title>Inicio de Sesión</title>
+		<ui:include src="/pages/commons/scripts.xhtml"></ui:include>
+		<h:outputStylesheet library="css" name="styles.css"></h:outputStylesheet>
+<!-- 		<h:outputStylesheet library="css" name="primeflex.min.css"></h:outputStylesheet> -->
+	</h:head>	
+	<h:body>
+	 	<div class="ui-fluid">
+	 		<h:form id="purchases">
+	 			<ui:include src="/pages/commons/navbar.xhtml"></ui:include>
+	 			<div class="p-grid sample-layout">
+	 				<ui:include src="/pages/commons/header.xhtml"></ui:include>
+	 				<div class="p-col-12 p-md-10 p-col-nogutter" style="background-color: #191919">
+	 					<div class="p-grid">
+	 						<div class="p-col-12">
+	 						<p:outputLabel style="font-size: 100%; margin-left: 10px" value="Mis compras"></p:outputLabel>
+	 						<p:separator></p:separator>
+	 						<p:dataTable id="misCompras" var="bill" value="#{purchasesController.bills}" paginator="true" rowsPerPageTemplate="6,12,16" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+	 							<p:column headerText="# Orden">
+	 								<p:outputLabel value="#{bill.orderId}"></p:outputLabel>
+	 							</p:column>
+	 							<p:column headerText="Impuestos">
+	 								<p:outputLabel value="#{bill.totalTax}">
+	 									<f:convertNumber currencySymbol="$" type="currency"/>
+	 								</p:outputLabel>
+	 							</p:column>
+	 							<p:column headerText="Total de la Compra">
+	 								<p:outputLabel value="#{bill.total}">
+	 									<f:convertNumber currencySymbol="$" type="currency"/>
+	 								</p:outputLabel>
+	 							</p:column>
+	 							<p:column headerText="Ver Detalle">
+	 								<p:commandButton icon="pi pi-search" action="#{purchasesController.showDetails(bill.cartAlbums)}" update="purchases:detailPurchase"></p:commandButton>
+	 							</p:column>
+	 						</p:dataTable>
+	 						<p:outputPanel id="detailPurchase">
+		 						<p:outputLabel style="font-size: 100%; margin-left: 10px" value="Detalles de la Compra" rendered="#{not empty purchasesController.cartAlbums}"></p:outputLabel>
+		 						<p:separator rendered="#{not empty purchasesController.cartAlbums}"></p:separator>
+	 							<div class="product card" style="width: 100%; margin: 0px auto; border: none">
+	 							<p:dataView id="dataViewResults" style="width: 100%" styleClass=".product-list-item" var="artistAlbum" value="#{purchasesController.cartAlbums}" rows="12" paginator="true" rowsPerPageTemplate="6,12,16" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" listIcon="pi pi-bars" rendered="#{not empty purchasesController.cartAlbums}">
+						            <p:dataViewListItem>
+						                <div class="product-list-item">
+						                    <p:graphicImage name="images/albums/#{artistAlbum.album.image}"/>
+						                    <div class="product-list-detail">
+						                        <div class="product-name"># Orden: #{artistAlbum.bill.orderId}</div>
+						                        <div class="product-name">Nombre: #{artistAlbum.album.name}</div>
+						                        <div class="product-name">Cantidad: #{artistAlbum.amount}</div>
+						                        <div class="product-name">Precio: #{artistAlbum.album.value}</div>
+						                    </div>
+						                    <div class="product-list-action">
+						                        <h:outputText value="#{artistAlbum.album.value * artistAlbum.amount}" styleClass="product-price">
+						                            <f:convertNumber currencySymbol="$" type="currency"/>
+						                        </h:outputText>
+						                    </div>
+						                </div>
+						            </p:dataViewListItem>
+					        	</p:dataView>
+					        	</div>
+	 						</p:outputPanel>
+	 							</div>
+	 						</div>
+	 					</div>
+	 				</div>
+	 			<ui:include src="/pages/commons/footer.xhtml"></ui:include>
+	 		</h:form>
+	 	</div>
+	</h:body>
+</html>

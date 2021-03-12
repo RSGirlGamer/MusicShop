@@ -1,6 +1,7 @@
 package com.project.musicshopservices.service.impl;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,6 +41,11 @@ public class BillServiceImpl implements BillService {
 		bill.setPerson(person);
 		this.billDAO.save(bill);
 		return bill;
+	}
+
+	@Override
+	public List<Bill> consultBillByPerson(Person person) {
+		return this.billDAO.findAllByPerson(person);
 	}
 
 }
