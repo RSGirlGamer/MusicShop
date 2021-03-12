@@ -13,6 +13,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.project.musicshopentities.dto.ArtistAlbumDTO;
+import com.project.musicshopentities.entities.CartAlbum;
+import com.project.musicshopservices.service.CartService;
 import com.project.musicshopservices.service.HomeService;
 import com.project.musicshopweb.session.SessionBean;
 import com.project.musicshopweb.utils.CommonsUtils;
@@ -30,6 +32,8 @@ public class HomeController {
 	private HomeService homeServiceImpl;
 	@ManagedProperty("#{sessionBean}")
 	private SessionBean sessionBean;
+	@ManagedProperty("#{cartServiceImpl}")
+	private CartService cartServiceImpl;
 	@PostConstruct
 	public void init() {
 		LOGGER.info("INFO");
@@ -55,5 +59,10 @@ public class HomeController {
 			CommonsUtils.showMessage(FacesMessage.SEVERITY_FATAL, "Fatal", "Hubo un error de formato");
 			LOGGER.info(e.getCause());
 		}
+	}
+	public void addAlbumCart(ArtistAlbumDTO artistAlbumDTO) {
+		CartAlbum cartAlbum = this.cartServiceImpl.saveAlbumsCart(artistAlbumDTO, this.sessionBean.getPerson().getCart(), 1);
+		List<CartAlbum> cartAlbums = this.sessionBean.getPerson().getCart().getCartAlbums();
+		cartAlbums.add(cartAlbum);
 	}
 }

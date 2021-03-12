@@ -61,6 +61,22 @@
 	    <artifactId>commons-lang3</artifactId>
 	    <version>${CommonsLang3-version}</version>
 	</dependency>
+	<!-- https://mvnrepository.com/artifact/org.glassfish.jersey.media/jersey-media-json-jackson -->
+		<dependency>
+			<groupId>org.glassfish.jersey.media</groupId>
+			<artifactId>jersey-media-json-jackson</artifactId>
+			<version>${Jersey-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jersey.core</groupId>
+			<artifactId>jersey-client</artifactId>
+			<version>${Jersey-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jersey.inject</groupId>
+			<artifactId>jersey-hk2</artifactId>
+			<version>${JerseyInject-version}</version>
+		</dependency>
   </dependencies>
 
   <build>

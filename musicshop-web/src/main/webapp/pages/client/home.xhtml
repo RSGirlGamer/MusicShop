@@ -34,7 +34,7 @@
 				                            <f:convertNumber currencySymbol="$" type="currency"/>
 				                        </h:outputText>
 				                    <p:commandButton styleClass=".ui-button-text-icon-left .ui-button-text" value="View Info" action="#{homeController.showDetail(artistAlbum)}" style="bottom:50px; left:30%;" icon="pi pi-info"></p:commandButton>
-				                    <p:commandButton style="right:32px" value="Add To Cart" icon="pi pi-shopping-cart" disabled="#{artistAlbum.album.status == 'false'}"></p:commandButton>
+				                    <p:commandButton style="right:32px" action="#{homeController.addAlbumCart(artistAlbum)}" update="dashboard:badgeCart" value="Add To Cart" icon="pi pi-shopping-cart" disabled="#{artistAlbum.album.status == 'false'}"></p:commandButton>
 				                    </div>
 			                	</div>
 			            	</p:dataViewGridItem>
@@ -51,7 +51,7 @@
 				                        <h:outputText value="#{artistAlbum.album.value}" styleClass="product-price">
 				                            <f:convertNumber currencySymbol="$" type="currency"/>
 				                        </h:outputText>
-				                        <p:commandButton value="Add To Cart" icon="pi pi-shopping-cart" disabled="#{artistAlbum.album.status == 'false'}"></p:commandButton>
+				                        <p:commandButton value="Add To Cart" action="#{homeController.addAlbumCart(artistAlbum)}" update="dashboard:badgeCart" icon="pi pi-shopping-cart" disabled="#{artistAlbum.album.status == 'false'}"></p:commandButton>
 				                        <span class="product-badge status-#{artistAlbum.album.status == true ? 'instock' : 'outofstock'}">#{artistAlbum.album.status == true ? 'Disponible' : 'No disponible'}</span>
 				                        <p:commandButton style="margin-top:5px" value="View Info" action="#{homeController.showDetail(artistAlbum)}" icon="pi pi-info"></p:commandButton>
 				                    </div>

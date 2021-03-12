@@ -53,7 +53,7 @@
 							                        	</p:commandButton>
 							                        	<p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
 												            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no ui-button-flat"/>
-												            <p:commandButton value="Si" update="cart:badgeCart, cart:dataViewResults, cart:total" action="#{cartController.deleteAlbumCart(artistAlbum)}" styleClass="ui-confirmdialog-yes" />
+												            <p:commandButton value="Si" update="cart:badgeCart, cart:dataViewResults, cart:total, cart:button" action="#{cartController.deleteAlbumCart(artistAlbum)}" styleClass="ui-confirmdialog-yes" />
 												        </p:confirmDialog>
 							                    	</div>
 							                	</div>
@@ -65,7 +65,7 @@
 					    						<f:convertNumber currencySymbol="$" type="currency"/>
 					    					</p:outputLabel>
 					    				</p:panelGrid>
-					    				<p:commandButton style="margin-top: 20px" value="Continue" disabled="#{empty sessionBean.person.cart.cartAlbums}" action="#{stepController.changeStep('/pages/client/payment.xhtml', 1)}"/>
+					    				<p:commandButton id="button" style="margin-top: 20px" value="Continue" disabled="#{sessionBean.person.cart.cartAlbums.size() == 0}" action="#{stepController.changeStep('/pages/client/payment.xhtml', 1)}"/>
 					    				</div>
 				    				</p:panel>
 	 							</div>

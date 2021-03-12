@@ -1,6 +1,9 @@
 package com.project.musicshopservices.service;
 
+import java.util.List;
+
 import com.project.musicshopentities.dto.ArtistAlbumDTO;
+import com.project.musicshopentities.entities.Bill;
 import com.project.musicshopentities.entities.Cart;
 import com.project.musicshopentities.entities.CartAlbum;
 
@@ -12,4 +15,6 @@ public interface CartService {
 	void deleteAlbumCart(CartAlbum cartAlbum);
 
 	float updateAmountCart(CartAlbum cartAlbum, Cart cart);
+
+	boolean updateCartAlbum(List<CartAlbum> cartAlbums, Bill bill);
 }

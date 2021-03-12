@@ -67,7 +67,7 @@ public class PaypalOrder extends PayPalClient {
 		}
 		ShippingDetail shippingDetail = new ShippingDetail();
 		shippingDetail.name(new Name().fullName(name + " " + firstLastName + " " + secondLastName));
-		shippingDetail.addressPortable(new AddressPortable().addressLine1("Hamilton Street").addressLine2("Sakura Center").adminArea1("Japón").adminArea2("San Fransokio").countryCode("SV"));
+		shippingDetail.addressPortable(new AddressPortable().addressLine1("Hamilton Street").addressLine2("Sakura Center").adminArea1("Japón").adminArea2("San Fransokio").countryCode("SV").postalCode("0614"));
 		DecimalFormat decimalFormat = new DecimalFormat("#.##");
 		double totalDecimal = Double.valueOf(decimalFormat.format(sessionBean.getTotal()));
 		double send = 20.00;

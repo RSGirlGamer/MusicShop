@@ -8,31 +8,6 @@
 	<h:head>
 		<title>Inicio de Sesión</title>
 		<ui:include src="/pages/commons/scripts.xhtml"></ui:include>
-		<p:growl id="message" showDetail="true" skipDetailIfEqualsSummary="true"/>
-		<script src="https://www.paypal.com/sdk/js?client-id=AZaWRXaNB2mGxt4ZW3W_z0prFSUSZE7-fcwVhnX-VnwCONNEDHHoZRXI7g5sAnz7FsPjsBrmtliNlqZ_"></script>
-		<script>paypal.Buttons({
-		    createOrder: function(data, actions) {
-		        // This function sets up the details of the transaction, including the amount and line item details.
-		        return fetch('../../PayPalServlet', {
-		        	method: 'post',
-		        	headers: {
-		        		'content-type': 'application/json'
-		        	}
-		        }).then(function(response) {
-		        	var json = response.json();
-		        	console.log(json);
-		        	return json;
-		        }).then(function(data) {
-		        	console.log(data);
-		        	return data.result.id;
-		        })	
-		        },
-		        onApprove: function(data, actions) {
-		        	return actions.order.capture().then(function(detail) {
-		        		finishedTransaction();
-		        	})
-		        }
-		    }).render('#payPalContainer');</script>
 		<h:outputStylesheet library="css" name="styles.css"></h:outputStylesheet>
 <!-- 		<h:outputStylesheet library="css" name="primeflex.min.css"></h:outputStylesheet> -->
 	</h:head>	
@@ -48,9 +23,10 @@
 	 						<p:panel id="pnl" style="width: 90%; margin: 0px auto; border: none;">
 	 							<ui:include src="/pages/commons/steps.xhtml"></ui:include>
 				    			<div class="p-col" style="width: 90%; margin: 0px auto; text-align: center">
-					 				<div id="payPalContainer" class="p-col" style="width: 90%; margin: 0px auto; background-color: black"></div>
-					 					<p:remoteCommand name="finishedTransaction" action="#{paymentController.saveBill}"></p:remoteCommand>
-					 				</div>
+					 				<p:panelGrid columnClasses="ui-g-12 ui-md-12" layout="grid" columns="1">
+					 					<p:outputLabel value="Compra Exitosa"></p:outputLabel>
+					 				</p:panelGrid>
+					 			</div>
 				    		</p:panel>
 	 							</div>
 	 						</div>

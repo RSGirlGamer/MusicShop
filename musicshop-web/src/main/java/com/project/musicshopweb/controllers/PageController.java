@@ -1,5 +1,7 @@
 package com.project.musicshopweb.controllers;
 
+import java.io.IOException;
+
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -17,21 +19,21 @@ import lombok.Data;
 @ManagedBean
 @ViewScoped
 @Data
-public class StepController {
-	private static final Logger LOGGER = LogManager.getLogger(StepController.class);
+public class PageController {
+	private static final Logger LOGGER = LogManager.getLogger(PageController.class);
 	@ManagedProperty("#{sessionBean}")
 	private SessionBean sessionBean;
 	@PostConstruct
 	public void init() {
 		LOGGER.info("INFO");
 	}
-	public void changeStep(String url, int step) {
+	public void redirectPage(String page) {
 		try {
-			this.sessionBean.setStep(step);
-			CommonsUtils.redirect(url);
-		} catch (Exception e) {
+			CommonsUtils.redirect(page);
+		} catch (IOException e) {
 			LOGGER.info(e.getMessage());
-			CommonsUtils.showMessage(FacesMessage.SEVERITY_ERROR, "Error", "Hubo un problema al ingresar al siguiente paso de la Compra.");
+			CommonsUtils.showMessage(FacesMessage.SEVERITY_ERROR, "ERROR", "Hubo un error al redireccionar");
+			e.printStackTrace();
 		}
 	}
 }

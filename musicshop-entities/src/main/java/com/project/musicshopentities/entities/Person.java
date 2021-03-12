@@ -33,6 +33,8 @@ public class Person extends CommonEntities{
 	private String secondtLastName;
 	@Column(name = "imagen", length = 100)
 	private String image;
+	@Column(name = "email", length = 200, nullable = false)
+	private String email;
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idTipoIdentificacion", nullable = false)
 	private TypeofIdentification typeofIdentification;

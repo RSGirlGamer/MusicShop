@@ -1,10 +1,14 @@
 package com.project.musicshopservices.service.impl;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.musicshopdata.DAO.CartDAO;
 import com.project.musicshopentities.dto.ArtistAlbumDTO;
+import com.project.musicshopentities.entities.Bill;
 import com.project.musicshopentities.entities.Cart;
 import com.project.musicshopentities.entities.CartAlbum;
 import com.project.musicshopservices.service.CartService;
@@ -40,5 +44,19 @@ public class CartServiceImpl implements CartService {
 		this.cartDAO.save(cartAlbum);
 		float total = this.calculateTotal(cart);
 		return total;
+	}
+	@Override
+	public boolean updateCartAlbum(List<CartAlbum> cartAlbums, Bill bill) {
+		boolean updated = false;
+		for (CartAlbum cartAlbum : cartAlbums) {
+			cartAlbum.setStatus("PAGADO");
+			cartAlbum.setDatePurchase(LocalDateTime.now());
+			cartAlbum.setBill(bill);
+		}
+		Iterable<CartAlbum> cartAlbumUpdated = this.cartDAO.saveAll(cartAlbums);
+		if (cartAlbumUpdated != null) {
+			updated = true;
+		}
+		return updated;
 	}
 }
