@@ -5,12 +5,15 @@
 	  xmlns:p="http://primefaces.org/ui"
 	  xmlns:ui="http://java.sun.com/jsf/facelets">
 	<p:panelMenu style="width:100%">
-            <p:submenu label="Mi Perfil" rendered="true" expanded="true">
+            <p:submenu label="Mi Perfil" rendered="#{sessionBean.person.rol.idRol == 4}" expanded="true">
                 <p:menuitem value="Información General" icon="pi pi-user-edit" action="#{pageController.redirectPage('/pages/client/personalinformation.xhtml')}"/>
                 <p:menuitem value="Mis Compras" icon="pi pi-shopping-cart" action="#{pageController.redirectPage('/pages/client/purchases.xhtml')}"/>
             </p:submenu>
-            <p:submenu label="Administración" rendered="false">
-                <p:menuitem value="Delete" action="#{menuView.delete}" ajax="false" icon="pi pi-times"/>
+            <p:submenu label="Administración" rendered="#{sessionBean.person.rol.idRol == 3}">
+<!--                 <p:menuitem value="Delete" action="#{menuView.delete}" ajax="false" icon="pi pi-times"/> -->
+                <p:menuitem value="Albums" icon="pi pi-book"/>
+                <p:menuitem value="Artistas" icon="pi pi-users"/>
+                <p:menuitem value="Perfiles" icon="pi pi-user"/>
             </p:submenu>
         </p:panelMenu>
 </ui:composition>

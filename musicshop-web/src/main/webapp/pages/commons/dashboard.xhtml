@@ -24,6 +24,9 @@
 	 							<c:if test="#{sessionBean.person.rol.idRol == 4}">		
 	 								<ui:include src="/pages/client/home.xhtml"></ui:include>
 	 							</c:if>
+	 							<c:if test="#{sessionBean.person.rol.idRol == 3}">		
+	 								<ui:include src="/pages/admin/home.xhtml"></ui:include>
+	 							</c:if>
 	 						</div>
 	 					</div>
 	 				</div>

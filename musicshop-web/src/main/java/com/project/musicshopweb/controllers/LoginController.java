@@ -43,12 +43,15 @@ public class LoginController {
 		Person person = this.loginService.consultUser(this.user, this.password);
 		if(person != null) {
 			try {
-				List<CartAlbum> cartAlbums = person.getCart().getCartAlbums().stream().filter(cartAlbum -> 
+				if (person.getRol().getIdRol() == 4) {
+					List<CartAlbum> cartAlbums = person.getCart().getCartAlbums().stream().filter(cartAlbum -> 
 					cartAlbum.getStatus().equals("Pendiente")).collect(Collectors.toList());
-				person.getCart().setCartAlbums(cartAlbums);
-				LOGGER.info("Albums del Carrito: " + cartAlbums.size());
+					person.getCart().setCartAlbums(cartAlbums);
+					LOGGER.info("Albums del Carrito: " + cartAlbums.size());
+				}
 				this.sessionBean.setPerson(person);
 				CommonsUtils.redirect("/pages/commons/dashboard.xhtml");
+				
 			} catch (IOException e) {
 				CommonsUtils.showMessage(FacesMessage.SEVERITY_FATAL, "Error al Iniciar Sesión", "Hubo un problema al entrar, Intente de nuevo");
 				System.out.println(e.getCause());
