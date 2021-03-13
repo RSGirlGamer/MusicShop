@@ -1,5 +1,5 @@
 # MusicShop
-MusicShop Version 1.8
+MusicShop Version 1.9
 
 Actualizaciones:
 - Creación de la Pantalla para Admin
