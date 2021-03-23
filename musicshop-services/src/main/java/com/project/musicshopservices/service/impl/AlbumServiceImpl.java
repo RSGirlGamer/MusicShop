@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.project.musicshopdata.DAO.AlbumDAO;
 import com.project.musicshopentities.dto.AlbumTopDTO;
+import com.project.musicshopentities.entities.Album;
 import com.project.musicshopservices.service.AlbumService;
 
 @Service
@@ -22,6 +23,13 @@ public class AlbumServiceImpl implements AlbumService {
 	public List<AlbumTopDTO> consultAlbumsTop() {
 		Pageable pageable = PageRequest.of(0, 10);
 		Page<AlbumTopDTO> page = this.albumDAO.consultAlbumsByFilter(pageable);
+		return page.getContent();
+	}
+
+	@Override
+	public List<Album> consultAlbums() {
+		Pageable pageable = PageRequest.of(0, 20);
+		Page<Album> page = this.albumDAO.findAll(pageable);
 		return page.getContent();
 	}
 }

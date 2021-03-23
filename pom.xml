@@ -13,8 +13,8 @@
   </modules>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>14</maven.compiler.source>
-    <maven.compiler.target>14</maven.compiler.target>
+    <maven.compiler.source>15</maven.compiler.source>
+    <maven.compiler.target>15</maven.compiler.target>
     <junit-version>5.7.0</junit-version>
     <hibernate-version>5.4.22.Final</hibernate-version>
     <MySQL-version>8.0.23</MySQL-version>

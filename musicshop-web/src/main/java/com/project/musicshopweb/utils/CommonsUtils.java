@@ -1,6 +1,10 @@
 package com.project.musicshopweb.utils;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.application.FacesMessage.Severity;
@@ -15,5 +19,8 @@ public class CommonsUtils {
 		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
 		String contextPath = externalContext.getRequestContextPath();
 		externalContext.redirect(contextPath + url);
+	}
+	public static void saveImage(String path, String fileName, InputStream inputStream) throws IOException {
+		Files.copy(inputStream, new File(path, fileName).toPath(), StandardCopyOption.REPLACE_EXISTING);
 	}
 }
