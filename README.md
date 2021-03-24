@@ -1,5 +1,5 @@
 # MusicShop
-MusicShop Version 1.9
+MusicShop Version 2.3
 
 Actualizaciones:
 - Creación de la Pantalla de Registrar
