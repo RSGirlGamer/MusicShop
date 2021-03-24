@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+	<h:head>
+		<title>Inicio de Sesión</title>
+		<ui:include src="/pages/commons/scripts.xhtml"></ui:include>
+		<h:outputStylesheet library="css" name="styles.css"></h:outputStylesheet>
+<!-- 		<h:outputStylesheet library="css" name="primeflex.min.css"></h:outputStylesheet> -->
+	</h:head>
+	<h:body>
+	 	<div class="ui-fluid">
+	 		<h:form id="frmprofiles">
+	 			<p:growl id="messages" showDetail="true" showSummary="true" skipDetailIfEqualsSummary="true"/>
+	 			<ui:include src="/pages/commons/navbar.xhtml"></ui:include>
+	 			<div class="p-grid sample-layout">
+	 				<ui:include src="/pages/commons/header.xhtml"></ui:include>
+	 				<div class="p-col-12 p-md-10 p-col-nogutter" style="background-color: #191919">
+	 					<div class="p-grid" style="width: 120%">
+	 						<div class="p-col-10" style="margin: 0px 0px">
+	 							<p:commandButton oncomplete="PF('dlg2').show()" update="frmPnl:pnlProfiles"  action="#{profileController.cleanComponents()}" value="Agregar"></p:commandButton>
+	 							<p:dataTable id="tblProfiles" rows="20"  paginator="true" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                    			currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                     			rowsPerPageTemplate="5,10,{ShowAll|'All'}" value="#{profileController.rols}" var="rol" filteredValue="#{profileController.rolFilter}">
+	 								<p:column headerText="Nombre" filterBy="#{rol.name}" filterMatchMode="contains">
+	 									<p:outputLabel value="#{rol.name}"></p:outputLabel>
+	 								</p:column>
+	 								<p:column headerText="Status" filterBy="#{rol.status}" filterMatchMode="contains">
+	 									<p:outputLabel value="Habilitado" rendered="#{rol.status}"></p:outputLabel>
+	 									<p:outputLabel value="Inhabilitado" rendered="#{!rol.status}"></p:outputLabel>
+	 								</p:column>	
+	 								<p:column headerText="Actualizar">
+	 									<p:commandButton value="Actualizar" update="frmPnl:pnlProfiles" immediate="true" action="#{profileController.getRolJSF(rol)}" oncomplete="PF('dlg2').show()"></p:commandButton>
+	 								</p:column>
+	 							</p:dataTable>
+	 						</div>
+	 					</div>
+	 				</div>
+	 				<ui:include src="/pages/commons/footer.xhtml"></ui:include>
+	 			</div>
+	 		</h:form>
+	 		<h:form id="frmPnl">
+	 			<p:dialog header="Agregar Perfil" widgetVar="dlg2" resizable="false" responsive="true" showEffect="fade" width="50%" modal="true" height="500">
+	 				<p:panelGrid id="pnlProfiles" columns="1" layout="grid" styleClass="ui-panelgrid-blank" columnClasses="ui-g-12">
+	 					<p:outputLabel for="txtName" value="Nombre: "></p:outputLabel>
+	 					<p:inputText id="txtName" value="#{profileController.rol.name}" required="true" requiredMessage="El nombre del Rol es requerido"></p:inputText>
+	 					<p:outputLabel rendered="#{profileController.rol.idRol != null}" value="Estatus: "></p:outputLabel>
+	 					<p:inputSwitch rendered="#{profileController.rol.idRol != null}" value="#{profileController.rol.status}"></p:inputSwitch>
+	 					<p:panelGrid columns="2" layout="grid" styleClass="ui-panelgrid-blank" columnClasses="ui-g-6, ui-g-6">
+	 						<p:commandButton value="Actualizar" update="frmprofiles:messages, pnlProfiles frmprofiles:tblProfiles" rendered="#{profileController.rol.idRol != null}" action="#{profileController.update}"></p:commandButton>
+	 						<p:commandButton value="Guardar" update="frmprofiles:messages, pnlProfiles frmprofiles:tblProfiles" rendered="#{profileController.rol.idRol == null}" action="#{profileController.save}"></p:commandButton>
+	 						<p:commandButton value="Cancelar" onclick="PF('dlg2').hide()" update="pnlProfiles" styleClass="ui-button-outlined ui-button-danger" action="#{profileController.cleanComponents}"></p:commandButton>
+	 					</p:panelGrid>
+	 				</p:panelGrid>
+				</p:dialog>
+	 		</h:form>
+	 	</div>
+	 	<style>
+			body .ui-scrollpanel {
+				border: none;
+			    background: #323232;
+			    color: #dedede;
+			    padding: 0.571rem 1rem;
+			}
+		</style>
+	</h:body>
+</html>
