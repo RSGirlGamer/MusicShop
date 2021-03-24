@@ -11,6 +11,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -36,7 +39,7 @@ public class Person extends CommonEntities{
 	@Column(name = "email", length = 200, nullable = false)
 	private String email;
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "idTipoIdentificacion", nullable = false)
+	@JoinColumn(name = "idTipoIdentificacion")
 	private TypeofIdentification typeofIdentification;
 	@Column(name = "usuario", length = 45, nullable = false)
 	private String user;
@@ -45,6 +48,7 @@ public class Person extends CommonEntities{
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idRol", nullable = false)
 	private Rol rol;
+	@Cascade(CascadeType.PERSIST)
 	@OneToOne(mappedBy = "person")
 	private Cart cart;
 }

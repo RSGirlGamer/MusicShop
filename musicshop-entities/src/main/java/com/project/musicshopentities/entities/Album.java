@@ -26,7 +26,7 @@ public class Album extends CommonEntities {
 	private String name;
 	@Column(name = "descripcion", length = 100, nullable = false)
 	private String description;
-	@Column(name = "imagen", length = 100, nullable = false)
+	@Column(name = "imagen", length = 100)
 	private String image;
 	@Column(name = "anio", nullable = false)
 	private int year;

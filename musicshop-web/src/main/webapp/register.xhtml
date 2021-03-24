@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+	<h:head>
+		<title>Inicio de Sesión</title>
+		<ui:include src="/pages/commons/scripts.xhtml"></ui:include>
+		<h:outputStylesheet library="css" name="styles.css"></h:outputStylesheet>
+<!-- 		<h:outputStylesheet library="css" name="primeflex.min.css"></h:outputStylesheet> -->
+	</h:head>	
+	<h:body>
+	 	<div class="ui-fluid">
+	 		<h:form id="register">
+	 			<ui:include src="/pages/commons/loading.xhtml"></ui:include>
+	 			<p:growl id="messages" showSummary="true" showDetail="true" skipDetailIfEqualsSummary="true"></p:growl>
+	 			<p:panel id="pnlRegister" header="Registrarse">
+	 				<p:panelGrid columns="4" columnClasses="ui-g-12 ui-md-2, ui-g-12 ui-md-4, ui-g-12 ui-md-2, ui-g-12 ui-md-4" style="ui-fluid" layout="grid">
+	 				<p:outputLabel value="Nombre:" for="txtName"></p:outputLabel>
+	 				<p:inputText id="txtName" value="#{registerController.person.name}" required="true" requiredMessage="El nombre es requerido"></p:inputText>
+	 				<p:outputLabel value="DUI: " for="txtDUI"></p:outputLabel>
+	 				<p:inputText id="txtDUI" value="#{registerController.person.numberID}" required="true" requiredMessage="El número DUI es requerido"></p:inputText>
+	 				<p:outputLabel value="Primer Apellido:" for="txtFirstLastName"></p:outputLabel>
+	 				<p:inputText id="txtFirstLastName" value="#{registerController.person.firstLastName}" required="true" requiredMessage="El primer apellido es requerido"></p:inputText>
+	 				<p:outputLabel value="Segundo Apellido:" for="txtSecondLastName"></p:outputLabel>
+	 				<p:inputText id="txtSecondLastName" value="#{registerController.person.secondtLastName}" required="true" requiredMessage="El segundo apellido es requerido"></p:inputText>
+	 				<p:outputLabel value="Foto de Perfil: "></p:outputLabel>
+	 				<p:fileUpload mode="advanced" multiple="false" label="Buscar" sizeLimit="10002400" dragDropSupport="true" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" invalidSizeMessage="Maximum file size allowed is 100 KB"  invalidFileMessage="only gif | jpg | jpeg | png is allowed" update="messages" listener="#{registerController.handleFileUpload}"/>
+	 				<p:outputLabel value="Usuario:" for="txtUser"></p:outputLabel>
+	 				<p:inputText id="txtUser" value="#{registerController.person.user}" required="true" requiredMessage="El usuario es requerido"></p:inputText>
+	 				<p:outputLabel value="Email:" for="txtUser"></p:outputLabel>
+	 				<p:inputText id="txtEmail" value="#{registerController.person.email}" required="true" requiredMessage="El correo es requerido">
+	 					<f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+	 				</p:inputText>
+	 				<p:outputLabel value="Contraseña:" for="txtEmail"></p:outputLabel>
+	 				<p:password id="txtPassword" value="#{registerController.person.password}"></p:password>
+	 			</p:panelGrid>
+	 		</p:panel>
+	 		<p:panelGrid columns="2" columnClasses="ui-g-6 ui-md-6, ui-g-6 ui-md-6" layout="grid" style="ui-fluid">
+	 			<p:commandButton value="Registrar" update="register:messages" action="#{registerController.save}"></p:commandButton>
+	 			<p:commandButton value="Cancelar" styleClass="ui-button-outlined ui-button-danger" action="#{pageController.redirectPage('/login.xhtml')}"></p:commandButton>
+	 		</p:panelGrid>
+	 	</h:form>
+	 	</div>
+	</h:body>
+</html>

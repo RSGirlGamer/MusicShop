@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:ui="http://java.sun.com/jsf/facelets">
+	<p:ajaxStatus onstart="PF('statusDialog').show()" delay="10" onsuccess="PF('statusDialog').hide()"/>
+    <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+        <div class="p-text-center">
+            <p:graphicImage name="images/tenor.gif"></p:graphicImage>
+        </div>
+    </p:dialog>
+</ui:composition>
