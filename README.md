@@ -1,7 +1,6 @@
 # MusicShop
-MusicShop Version 1.9
+MusicShop Version 2.1
 
 Actualizaciones:
-- Creación de la Pantalla para Admin
-- Función de los Top 10 de Albumes Implementada
-- Creación de un gráfico para el Top 10
+- Creación de la pantalla Artista Admin
+- Creación de las funciones de Artista Admin
