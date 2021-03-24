@@ -2,6 +2,7 @@
 MusicShop Version 1.9
 
 Actualizaciones:
-- Creación de la Pantalla para Admin
-- Función de los Top 10 de Albumes Implementada
-- Creación de un gráfico para el Top 10
+- Creación de la Pantalla de Registrar
+- Funcionalidad de Registrar
+- LoginFilter Agregado
+- Imagen de Carga Implementado
